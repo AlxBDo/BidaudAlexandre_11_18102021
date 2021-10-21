@@ -2,47 +2,25 @@ import { Component } from 'react'
 
 class fetchData extends Component{
 
-    constructor(url){
-        super()
-        this.url = url
+    constructor(props){
+        super(props)
         this.state = {
             data: {},
-            isLoading: true,
-            error: false,
+            isLoading: true
         }
     }
 
-    setData = (dataValue) => {
-        this.setState({ data: dataValue })
-    }
-
-    updateError= (errorValue) => {
-        this.setState({ error: errorValue })
-    }
-
-    updateLoading = (loadingState) => {
-        this.setState({ isLoading: loadingState })
-    }
-
-    
-
-    async fectData(url){
-        try{
-            let response = await fetch(url)
-            this.setData(await response.json())
-        } catch (err){
-            console.error(err)
-        } finally { this.updateLoading(false) }
-    }
-
-    getData(){
-        const url = this.url
-        if(!url){ return this.updateLoading(true) 
-        } else {
-            const [data, isLoading, error] = this.state
-            this.useEffect(() => { this.fectData() }, [url])
-            return [data, isLoading, error]
-        }
+    componentDidMount() {
+        fetch("https://alxbdo.github.io/BidaudAlexandre_11_18102021/src/datas/logements.json")
+        .then((response) => response.json())
+        .then((jsonResponse) => {
+            if(this.props.match){
+                for(let logement of jsonResponse){
+                    const { id_logement } = this.props.match.params
+                    if(logement.id === id_logement){ this.setState({ data: logement, isLoading: false }) }
+                }
+            } else { this.setState({ data: jsonResponse, isLoading: false }) }
+        })
     }
 
 }

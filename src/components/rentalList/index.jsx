@@ -1,14 +1,25 @@
-import { Component } from "react";
-import fetchData from "../../utils/hooks";
+import { Link } from 'react-router-dom'
 
-class RentalList extends Component{
+import fetchData from '../../utils/hooks'
+
+
+class RentalList extends fetchData {
 
     render(){
-        let myData = new fetchData()
-        const data = myData.getData("../../datas/logements.json")
-        console.log(data)
+        const {data, isLoading}  = this.state
         return(
-            <div>Mes datas en console.log</div>
+            <section id="rentalList">
+                {isLoading ? (
+                    <div>Récupération des données</div>
+                ) : ( 
+                    data.map((logement) => (
+                        <Link key={logement.id} to={`/Logement/${logement.id}`}>
+                            <img key={"cover"+logement.id} src={logement.cover} alt={logement.title} />
+                            <p key={"title"+logement.id}>{logement.title}</p>
+                        </Link>
+                    )
+                ))}
+            </section>
         )
     }
 
