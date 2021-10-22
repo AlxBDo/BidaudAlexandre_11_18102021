@@ -1,13 +1,70 @@
+/**
+ *  GLOBAL
+*/
+
 :root{
     --first-color : #FF6060; 
 	--background-color: #F6F6F6
 }
 
+.dropdown-box a {
+	background-color: var(--first-color);
+	display: block;
+	color: white;
+	text-decoration: none;
+	font-size: medium;
+	border-radius: 7px;
+	padding: 2% 4%;
+}
+.dropdown-box.close a:after, .dropdown-box.open a:after{ float: right; }
+.dropdown-box.close a:after {
+	content: url("https://alxbdo.github.io/BidaudAlexandre_11_18102021/src/assets/dropdown_close.png");
+}
+.dropdown-box.open a:after {
+	content: url("https://alxbdo.github.io/BidaudAlexandre_11_18102021/src/assets/dropdown_open.png");
+}
+.dropdown-box li {
+	list-style: none;
+}
+.dropdown-box p, .dropdown-box ul {
+	padding: 6% 4%;
+	background-color: var(--background-color);
+	margin: -6px 0 0;
+	z-index: -1;
+	position: relative;
+	font-size: small;
+	line-height: 1.5em;
+	border-radius: 7px;
+	transition: all 250ms ease-in-out;
+	overflow: hidden;
+}
+.dropdown-box.close p, .dropdown-box.close ul {
+	height: 0;
+	padding: 0 4%;
+	transition: all 250ms ease-in-out;
+	opacity: 0;
+}
+
 html, body {
     font-family: Montserrat;
 	margin: 0;
+}  
+main {
+	width: 80%;
+	height: 74%;
+	margin: auto;
+	padding: 3% 0
+}
+#root {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 }
 
+
+/**
+ *  404 page
+*/
 .error-msg {
 	color: var(--first-color);
 	text-align: center;
@@ -27,6 +84,10 @@ html, body {
 	font-weight: 700;
 }
 
+
+/**
+ *  Footer
+ */
 footer {
 	height: 10%;
 	background-color: black;
@@ -39,6 +100,10 @@ footer div {
 	font-weight: 500;
 }
 
+
+/**
+ *  Herder
+ */
 header {
 	width: 80%;
 	height: 10%;
@@ -60,12 +125,123 @@ header nav a {
 	text-decoration: none;
 }
 
-main {
-	width: 80%;
-	height: 74%;
-	margin: auto;
-	padding: 3% 0
+
+/**
+ *  Fiche logement (accommodation sheet)
+*/
+#details {
+	display: flex;
+	justify-content: space-between;
+	padding: 2% 0;
 }
+#details div {
+	width: 40%;
+}
+
+#logement-pictures {
+	overflow: hidden;
+	max-height: 350px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#logement-pictures img {
+	object-fit: cover;
+	width: 0%;
+	border-radius: 20px;
+}
+#logement-pictures img.activ {
+	width: 100%;
+	transition: width 250ms ease-in-out;
+	transform-origin: center center;
+}
+
+#next {
+	background-image: url("https://alxbdo.github.io/BidaudAlexandre_11_18102021/src/assets/next.png");
+	background-color: black;
+	width: 48px;
+	height: 80px;
+	opacity: 0.5;
+	float: right;
+	margin-left: -65px;
+}
+#previous {
+	background-image: url("https://alxbdo.github.io/BidaudAlexandre_11_18102021/src/assets/previous.png");
+	background-color: black;
+	width: 48px;
+	height: 80px;
+	opacity: 0.5;
+	float: left;
+	margin-right: -65px;
+}
+
+#rating .star {
+	background-image: url("https://alxbdo.github.io/BidaudAlexandre_11_18102021/src/assets/inactiv_star.png");
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+}
+#rating.star1 .star:nth-of-type(1), #rating.star2 .star:nth-of-type(1), #rating.star3 .star:nth-of-type(1), #rating.star4 .star:nth-of-type(1), #rating.star5 .star:nth-of-type(1), 
+#rating.star2 .star:nth-of-type(2), #rating.star3 .star:nth-of-type(2), #rating.star4 .star:nth-of-type(2),  #rating.star5 .star:nth-of-type(2),
+#rating.star3 .star:nth-of-type(3), #rating.star4 .star:nth-of-type(3), #rating.star5 .star:nth-of-type(3), 
+#rating.star4 .star:nth-of-type(4), #rating.star5 .star:nth-of-type(4), 
+#rating.star5 .star:nth-of-type(5) 
+{
+	content: url("https://alxbdo.github.io/BidaudAlexandre_11_18102021/src/assets/activ_star.png");
+}
+
+#top-infos, #details {
+	color: var(--first-color);
+	display: flex;
+}
+#top-infos div {
+	width: 50%;
+} 
+#top-infos div:nth-of-type(2) {
+	text-align: right;
+}
+#top-infos h1 {
+	font-weight: 500;
+	margin: 2% 0 0;
+}
+#top-infos #host {
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	margin: 3% 0;
+	align-items: center;
+}
+#top-infos #host img {
+	border-radius: 100%;
+	width: 13%;
+	order: 2;
+}
+#top-infos #host p {
+	width: 20%;
+	max-width: 105px;
+	font-weight: 500;
+	margin-right: 2%;
+}
+#top-infos li {
+	background-color: var(--first-color);
+	display: inline-block;
+	margin: 0 1% 0 0;
+	color: white;
+	font-size: x-small;
+	padding: 1% 5% 0.5%;
+	border-radius: 30px;
+}
+#top-infos p {
+	margin: 0.5% 0;
+}
+#top-infos ul {
+	padding: 0;
+}
+
+
+/**
+ *  Home
+ */
 main picture img {
 	object-fit: contain;
 	width: 100%;
@@ -87,6 +263,7 @@ main picture img {
 	display: flex;
 	flex-direction: column;
 	text-decoration: none;
+	border-radius: 10px;
 }
 #rentalList a img {
 	object-fit: cover;
@@ -102,10 +279,4 @@ main picture img {
 	background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(2,0,0,0.9) 100%); /* Chrome10-25,Safari5.1-6 */
 	background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(2,0,0,0.9) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#80020000',GradientType=0 ); /* IE6-9 */
-}
-
-#root {
-	display: flex;
-	flex-direction: column;
-	height: 100%;
 }

@@ -1,12 +1,30 @@
 import fetchData from '../../utils/hooks'
 
+import DropdownBox from '../../components/dropdownBox'
+
 class Logement extends fetchData {
 
     loadingData(dataNames){ 
-        //return "<div class=\"loading-data\">Récupération des données</div>"
         return(
             <div className="loading-data">Récupération des {dataNames}</div>
         )
+    }
+
+    moveSlider = (e)=>{
+        let move = e.target.getAttribute("id") === "next" ? 1 : -1
+        let currentPicture = document.querySelector(".activ")
+        currentPicture.classList.remove("activ")
+        currentPicture.classList.add("inactiv")
+        let pictureNumber = parseInt(currentPicture.getAttribute('id').split("-")[1])
+        if(pictureNumber + move === 0){
+            pictureNumber = parseInt(document.getElementById("pictures-sum").value) - 1
+        } else if (pictureNumber + move + 1 === parseInt(document.getElementById("pictures-sum").value)){
+            pictureNumber = 0
+        } else { pictureNumber = parseInt(pictureNumber) + move }
+        console.log("Picture number is ", pictureNumber)
+        let pictureDisplay = document.getElementById("picture-"+pictureNumber)
+        pictureDisplay.classList.add("activ")
+        pictureDisplay.classList.remove("inactiv")
     }
 
     render(){
@@ -21,19 +39,25 @@ class Logement extends fetchData {
             equipments, 
             tags
         } = data
+        let logementPicturesSectionClass = typeof pictures !== "undefined" && pictures.lenght > 0 ? "slider start-mode" : null
+        let picturesCounter = 1
         return(
             <main>
-                <section id="logement-pictures">
+                <section id="logement-pictures" className={logementPicturesSectionClass}>
+                    <div id="previous" className="slider-btn" onClick={(e)=> this.moveSlider(e)}></div>
                     {!Array.isArray(pictures) ? this.loadingData("images") : ( 
                         pictures.map((picture) => (
                             <img 
                                 key={picture.substring(102, 106)} 
                                 src={picture} 
+                                id={`picture-${picturesCounter++}`}
                                 className={picture === pictures[0] ? "activ" : ""} 
                                 alt=""
                             />
                         )
                     ))}
+                    <div id="next" className="slider-btn" onClick={(e)=> this.moveSlider(e)}></div>
+                    <input type="hidden" id="pictures-sum" value={picturesCounter} />
                 </section>
                 <section id="top-infos">
                     <div>
@@ -61,22 +85,12 @@ class Logement extends fetchData {
                         </p>
                     </div>
                 </section>
-                <section id="details">
-                    <div className="dropdown-box">
-                        <a id="description-link" href="#description">Description</a>
-                        <p id="description">{description}</p>
-                    </div>
-                    <div className="dropdown-box">
-                        <a id="equipments-link" href="#equipments">Equipement</a>
-                        <ul id="equipments">
-                            {isLoading ? this.loadingData("équipements") : (
-                                equipments.map((equipment) =>(
-                                    <li key={equipment}>{equipment}</li>
-                                ))
-                            )}
-                        </ul>
-                    </div>
-                </section>
+                {isLoading ? this.loadingData("détails du logement") : (
+                    <section id="details">
+                        <DropdownBox text={description} id={"Description"} state={"open"} />
+                        <DropdownBox text={equipments} id={"Équipements"} state={"open"} />
+                    </section>
+                )}
             </main>
         )
     }
