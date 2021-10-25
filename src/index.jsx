@@ -9,6 +9,8 @@ import Logement from './pages/Logement'
 import APropos from './pages/APropos'
 import Footer from './components/footer'
 
+import './index.css'
+
 
 ReactDOM.render(
   <React.StrictMode>

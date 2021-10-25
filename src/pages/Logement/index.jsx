@@ -1,6 +1,21 @@
-import fetchData from '../../utils/hooks'
+import styled from 'styled-components'
 
+import fetchData from '../../utils/hooks'
 import DropdownBox from '../../components/dropdownBox'
+
+
+import nextIconPicture from '../../assets/next.png'
+import previousIconPicture from '../../assets/previous.png'
+
+const NextIcon = styled.div`
+    background-image: url(${nextIconPicture}); 
+    right: 2%;
+`
+
+const PreviousIcon = styled.div`
+    background-image: url(${previousIconPicture}); 
+    left: 2%;
+`
 
 class Logement extends fetchData {
 
@@ -19,8 +34,8 @@ class Logement extends fetchData {
         currentPicture.classList.add("inactiv")
         let pictureNumber = parseInt(currentPicture.getAttribute('id').split("-")[1])
         if(pictureNumber + move === 0){
-            pictureNumber = parseInt(document.getElementById("pictures-sum").value) - 1
-        } else if (pictureNumber + move > parseInt(document.getElementById("pictures-sum").value) - 1){
+            pictureNumber = this.state.data.pictures.length
+        } else if (pictureNumber + move > this.state.data.pictures.length){
             pictureNumber = 1
         } else { pictureNumber = parseInt(pictureNumber) + move }
         let pictureDisplay = document.getElementById("picture-"+pictureNumber.toString())
@@ -43,8 +58,8 @@ class Logement extends fetchData {
         let picturesCounter = 1
         return(
             <main>
-                <section id="logement-pictures">
-                    <div id="previous" className="slider-btn" onClick={(e)=> this.moveSlider(e)}></div>
+                <section id="logement-pictures" className={Array.isArray(pictures) && pictures.length > 1 ? "slider" : null }>
+                    <PreviousIcon id="previous" className="slider-btn" onClick={(e)=> this.moveSlider(e)} />
                     {!Array.isArray(pictures) ? this.loadingData("images") : ( 
                         pictures.map((picture) => (
                             <img 
@@ -56,8 +71,7 @@ class Logement extends fetchData {
                             />
                         )
                     ))}
-                    <div id="next" className="slider-btn" onClick={(e)=> this.moveSlider(e)}></div>
-                    <input type="hidden" id="pictures-sum" value={picturesCounter} />
+                    <NextIcon id="next" className="slider-btn" onClick={(e)=> this.moveSlider(e)} />
                 </section>
                 <section id="top-infos">
                     <div>

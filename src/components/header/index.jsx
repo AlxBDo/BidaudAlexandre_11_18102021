@@ -2,8 +2,6 @@ import { Link } from "react-router-dom"
 import { Component } from "react"
 import Logo from '../../assets/LOGO.svg'
 
-import '../../utils/style/global.css'
-
 class Header extends Component {
 
     render() {
