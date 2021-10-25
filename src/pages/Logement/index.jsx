@@ -4,6 +4,8 @@ import DropdownBox from '../../components/dropdownBox'
 
 class Logement extends fetchData {
 
+    pictureSum = 0
+
     loadingData(dataNames){ 
         return(
             <div className="loading-data">Récupération des {dataNames}</div>
@@ -18,11 +20,10 @@ class Logement extends fetchData {
         let pictureNumber = parseInt(currentPicture.getAttribute('id').split("-")[1])
         if(pictureNumber + move === 0){
             pictureNumber = parseInt(document.getElementById("pictures-sum").value) - 1
-        } else if (pictureNumber + move + 1 === parseInt(document.getElementById("pictures-sum").value)){
-            pictureNumber = 0
+        } else if (pictureNumber + move > parseInt(document.getElementById("pictures-sum").value) - 1){
+            pictureNumber = 1
         } else { pictureNumber = parseInt(pictureNumber) + move }
-        console.log("Picture number is ", pictureNumber)
-        let pictureDisplay = document.getElementById("picture-"+pictureNumber)
+        let pictureDisplay = document.getElementById("picture-"+pictureNumber.toString())
         pictureDisplay.classList.add("activ")
         pictureDisplay.classList.remove("inactiv")
     }
@@ -39,11 +40,10 @@ class Logement extends fetchData {
             equipments, 
             tags
         } = data
-        let logementPicturesSectionClass = typeof pictures !== "undefined" && pictures.lenght > 0 ? "slider start-mode" : null
         let picturesCounter = 1
         return(
             <main>
-                <section id="logement-pictures" className={logementPicturesSectionClass}>
+                <section id="logement-pictures">
                     <div id="previous" className="slider-btn" onClick={(e)=> this.moveSlider(e)}></div>
                     {!Array.isArray(pictures) ? this.loadingData("images") : ( 
                         pictures.map((picture) => (

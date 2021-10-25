@@ -16,6 +16,10 @@
 	border-radius: 7px;
 	padding: 2% 4%;
 }
+.dropdown-box.close { 
+	transition: margin 250ms ease-in-out; 
+	height: 50px;
+}
 .dropdown-box.close a:after, .dropdown-box.open a:after{ float: right; }
 .dropdown-box.close a:after {
 	content: url("https://alxbdo.github.io/BidaudAlexandre_11_18102021/src/assets/dropdown_close.png");
@@ -27,19 +31,18 @@
 	list-style: none;
 }
 .dropdown-box p, .dropdown-box ul {
-	padding: 6% 4%;
+	width: 92%;
 	background-color: var(--background-color);
 	margin: -6px 0 0;
 	z-index: -1;
 	position: relative;
-	font-size: small;
-	line-height: 1.5em;
 	border-radius: 7px;
 	transition: all 250ms ease-in-out;
 	overflow: hidden;
 }
 .dropdown-box.close p, .dropdown-box.close ul {
-	height: 0;
+	transform: scaleY(0) translateY(-50px);
+	transform-origin: top;
 	padding: 0 4%;
 	transition: all 250ms ease-in-out;
 	opacity: 0;
@@ -48,17 +51,27 @@
 html, body {
     font-family: Montserrat;
 	margin: 0;
-}  
+}
+
+#loading-data {
+	border: 10px solid lightgreen;
+	height: 50px;
+	width: 50px;
+	border-radius: 100px;
+	border-bottom-color: transparent;
+	margin: 100px auto;
+	animation: loading 700ms linear infinite;
+}
+
 main {
-	width: 80%;
-	height: 74%;
-	margin: auto;
-	padding: 3% 0
+	width: 90%;
+	margin: 0% auto 5%;
 }
 #root {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
+	position: relative
 }
 
 
@@ -69,17 +82,10 @@ main {
 	color: var(--first-color);
 	text-align: center;
 }
-.error-msg div {
-	margin: 6% auto 10%;
-}
 .error-msg p {
 	font-weight: 500;
 }
-.error-msg div p:last-child {
-	font-size: x-large;
-}
 #page-not-found {
-	font-size: 10em;
 	margin: 2% auto;
 	font-weight: 700;
 }
@@ -89,7 +95,6 @@ main {
  *  Footer
  */
 footer {
-	height: 10%;
 	background-color: black;
 	padding: 3%;
 	color: white;
@@ -102,15 +107,12 @@ footer div {
 
 
 /**
- *  Herder
+ *  Header
  */
 header {
-	width: 80%;
-	height: 10%;
-	margin: 2% auto;
+	width: 90%;
 	display: flex;
 	justify-content: space-between;
-	align-items: baseline;
 }
 header nav {
 	width: 50%;
@@ -118,68 +120,65 @@ header nav {
 }
 header nav a {
 	color: var(--first-color);
-	font-size: x-large;
 	margin-left: 5%;
 	font-family: Montserrat;
 	font-weight: 500;
 	text-decoration: none;
 }
+header nav a.current-page { text-decoration: underline; }
 
 
 /**
  *  Fiche logement (accommodation sheet)
 */
-#details {
-	display: flex;
-	justify-content: space-between;
-	padding: 2% 0;
-}
-#details div {
-	width: 40%;
+#details { padding: 2% 0; }
+
+#description, #equipements {
+	font-size: small;
+	line-height: 1.5em;
+	padding: 6% 4%;
 }
 
 #logement-pictures {
 	overflow: hidden;
-	max-height: 350px;
+	max-height: 415px;
 	display: flex;
-	justify-content: center;
 	align-items: center;
+	background-color: var(--background-color);
+	border-radius: 20px;
+	position: relative;
 }
 #logement-pictures img {
 	object-fit: cover;
-	width: 0%;
 	border-radius: 20px;
+	width: 0;
+	transition: width 250ms ease-in-out;
 }
 #logement-pictures img.activ {
+	transform-origin: right;
 	width: 100%;
-	transition: width 250ms ease-in-out;
-	transform-origin: center center;
 }
 
-#next {
-	background-image: url("https://alxbdo.github.io/BidaudAlexandre_11_18102021/src/assets/next.png");
-	background-color: black;
-	width: 48px;
-	height: 80px;
-	opacity: 0.5;
-	float: right;
-	margin-left: -65px;
+#next { 
+	background-image: url("https://alxbdo.github.io/BidaudAlexandre_11_18102021/src/assets/next.png"); 
+	right: 2%;
 }
-#previous {
+#next, #previous {
+	z-index: 9;
+	cursor: pointer;
+	position: absolute;
+}
+#previous { 
 	background-image: url("https://alxbdo.github.io/BidaudAlexandre_11_18102021/src/assets/previous.png");
-	background-color: black;
-	width: 48px;
-	height: 80px;
-	opacity: 0.5;
-	float: left;
-	margin-right: -65px;
+	left: 2%
 }
 
 #rating .star {
 	background-image: url("https://alxbdo.github.io/BidaudAlexandre_11_18102021/src/assets/inactiv_star.png");
 	display: inline-block;
-	width: 30px;
-	height: 30px;
+	background-repeat: repeat;
+	background-position: center;
+	background-size: cover;
 }
 #rating.star1 .star:nth-of-type(1), #rating.star2 .star:nth-of-type(1), #rating.star3 .star:nth-of-type(1), #rating.star4 .star:nth-of-type(1), #rating.star5 .star:nth-of-type(1), 
 #rating.star2 .star:nth-of-type(2), #rating.star3 .star:nth-of-type(2), #rating.star4 .star:nth-of-type(2),  #rating.star5 .star:nth-of-type(2),
@@ -187,16 +186,10 @@ header nav a {
 #rating.star4 .star:nth-of-type(4), #rating.star5 .star:nth-of-type(4), 
 #rating.star5 .star:nth-of-type(5) 
 {
-	content: url("https://alxbdo.github.io/BidaudAlexandre_11_18102021/src/assets/activ_star.png");
+	background-image: url("https://alxbdo.github.io/BidaudAlexandre_11_18102021/src/assets/activ_star.png");
 }
 
-#top-infos, #details {
-	color: var(--first-color);
-	display: flex;
-}
-#top-infos div {
-	width: 50%;
-} 
+#top-infos, #details { color: var(--first-color); }
 #top-infos div:nth-of-type(2) {
 	text-align: right;
 }
@@ -205,37 +198,28 @@ header nav a {
 	margin: 2% 0 0;
 }
 #top-infos #host {
-	width: 100%;
 	display: flex;
 	justify-content: flex-end;
-	margin: 3% 0;
 	align-items: center;
 }
 #top-infos #host img {
 	border-radius: 100%;
-	width: 13%;
 	order: 2;
 }
 #top-infos #host p {
-	width: 20%;
-	max-width: 105px;
-	font-weight: 500;
-	margin-right: 2%;
+	margin-right: 5%;
 }
 #top-infos li {
 	background-color: var(--first-color);
 	display: inline-block;
-	margin: 0 1% 0 0;
 	color: white;
 	font-size: x-small;
 	padding: 1% 5% 0.5%;
-	border-radius: 30px;
 }
-#top-infos p {
-	margin: 0.5% 0;
-}
+#top-infos p { font-weight: 500; }
 #top-infos ul {
 	padding: 0;
+	margin: 0;
 }
 
 
@@ -248,18 +232,8 @@ main picture img {
 	margin-bottom: 5%;
 }
 
-#rentalList {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	background-color: var(--background-color);
-	border-radius: 25px;
-}
 #rentalList a {
-	width: 27%;
-	margin: 3% 3% 2%;
 	overflow: hidden;
-	height: 340px;
 	display: flex;
 	flex-direction: column;
 	text-decoration: none;
@@ -280,3 +254,174 @@ main picture img {
 	background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(2,0,0,0.9) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#80020000',GradientType=0 ); /* IE6-9 */
 }
+
+
+/**
+ *  A Propos
+ */
+#a-propos div { margin: 0 auto 3%; }
+#a-propos .open p { color: var(--first-color); }
+
+
+/**
+ * media query
+ */
+ @media screen and (max-width: 899px){
+	#a-propos .dropdown-box a { 
+		padding: 3%;
+		font-size: small; 
+	}
+	#a-propos .open p {
+		padding: 7% 5% 10%;
+		width: 90%;
+		font-size: 0.7em;
+	}
+	.dropdown-box.open { margin-bottom: 25px; }
+	.error-msg div {
+		margin: 50% auto 40%;
+		width: 80%;
+	}
+	.error-msg div:last-child a {
+		font-size: small;
+		font-weight: 500;
+	}
+	.error-msg p {
+		font-weight: 500;
+	}
+	.error-msg div p:last-child { font-size: large; }
+	#page-not-found { font-size: 5em; }
+	header {
+		margin: 5% auto;
+		align-items: center;
+	}
+	header img {
+		width: 40%;
+	}
+	header nav a {
+		font-size: x-small;
+		text-transform: uppercase;
+	}
+	#location { margin: 3% 0; }
+	#logement-pictures img { height: 255px; }
+	#next, #previous {
+		width: 13px;
+		height: 20px;
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+	#rating .star {
+		width: 16px;
+		height: 16px;
+		margin-right: 3px;
+	}
+	#rentalList a {
+		margin: 0% 0% 5%;
+		height: 285px;
+	}
+	#top-infos div:nth-of-type(2) {
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: space-between;
+		align-items: center;
+	}
+	#top-infos #host img { width: 20%; }
+	#top-infos #host p { max-width: 85px; }
+	#top-infos li {
+		margin: 0 5% 0 0;
+		border-radius: 5px;
+	}
+ }
+@media screen and (min-width:900px) {
+	#a-propos div { width: 80%; }
+	#a-propos .dropdown-box a {
+		padding: 1% 2%;
+		font-size: x-large;
+	}
+	#a-propos .open p {
+		padding: 3% 2%;
+		width: 96%;
+		font-size: large;
+	}
+	#details {
+		display: flex;
+		justify-content: space-between;
+	}
+	#details div { width: 40%; }
+	.error-msg div {
+		margin: 6% auto 10%;
+	}
+	.error-msg p {
+		font-weight: 500;
+	}
+	.error-msg div p:last-child {
+		font-size: x-large;
+	}
+	#page-not-found {
+		font-size: 10em;
+		margin: 2% auto;
+		font-weight: 700;
+	}
+	footer, header {
+		height: 10%;
+	}
+	header {
+		margin: 2% auto;
+		align-items: baseline;
+		max-width: 1250px;
+	}
+	header nav a {
+		font-size: x-large;
+	}
+	#location { margin: 1% 0 3%; }
+	#logement-pictures img { height: 415px; }
+	main { 
+		height: 74%;
+		max-width: 1250px; 
+	}
+	#next, #previous {
+		width: 48px;
+		height: 80px;
+	}
+	#rating .star {
+		width: 25px;
+		height: 25px;
+		margin-right: 5px;
+	}
+	#rentalList {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		background-color: var(--background-color);
+		border-radius: 25px;
+		padding: 2%;
+	}
+	#rentalList a {
+		width: 27%;
+		margin: 3% 3% 2%;
+		height: 340px;
+	}
+	#top-infos, #details { display: flex; }
+	#top-infos div:first-of-type { width: 80%; }
+	#top-infos div:last-of-type { width: 20%; }
+	#top-infos h1 { font-size: xx-large; }
+	#top-infos #host {
+		width: 100%;
+		margin: 10% 0 0px;
+	}
+	#top-infos #host img { width: 25%; }
+	#top-infos #host p { max-width: 105px; }
+	#top-infos li {
+		margin: 0 1% 0 0;
+		border-radius: 30px;
+	}
+}
+
+
+/**
+ * Keyframes
+ */
+
+ @keyframes loading {
+	from{ transform: rotate(0deg)}
+	to { transform: rotate(360deg)}
+  }

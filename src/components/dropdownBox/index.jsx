@@ -13,7 +13,7 @@ class DropdownBox extends Component {
 
     render(){
         const { text, id, state } = this.state
-        const id_html = id.toString().toLowerCase()
+        const id_html = id.toString().toLowerCase().replace("é", "e")
         return(
             <div key={id} className={`dropdown-box ${state}`} onClick={this.changeState} >
                 <a id={`${id_html}-link`} href={`#${id_html}`}>{id}</a>

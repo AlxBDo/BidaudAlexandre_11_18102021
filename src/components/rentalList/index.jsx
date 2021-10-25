@@ -10,7 +10,7 @@ class RentalList extends fetchData {
         return(
             <section id="rentalList">
                 {isLoading ? (
-                    <div>Récupération des données</div>
+                    <div id="loading-data"></div>
                 ) : ( 
                     data.map((logement) => (
                         <Link key={logement.id} to={`/Logement/${logement.id}`}>

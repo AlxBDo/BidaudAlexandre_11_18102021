@@ -7,12 +7,14 @@ import '../../utils/style/global.css'
 class Header extends Component {
 
     render() {
+        let currentPath = this.props.location.pathname.split("/")[1]
+        let linkClass = "current-page"
         return (
             <header>
                 <img src={Logo} alt="Kasa logo"/>
                 <nav>
-                    <Link to="/"> Accueil </Link>
-                    <Link to="/A-Propos">A Propos</Link>
+                    <Link to="/" className={currentPath === "" ? linkClass : null }> Accueil </Link>
+                    <Link to="/A-Propos" className={currentPath === "A-Propos" ? linkClass : null }>A Propos</Link>
                 </nav>
             </header>
         )

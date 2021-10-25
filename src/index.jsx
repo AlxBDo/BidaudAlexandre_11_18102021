@@ -6,13 +6,16 @@ import Error from './components/error'
 import Header from './components/header'
 import Home from './pages/Home'
 import Logement from './pages/Logement'
+import APropos from './pages/APropos'
 import Footer from './components/footer'
 
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <Header />
+          <Route 
+            render={(props) => <Header {...props} />}
+          />
         <Switch>
           <Route exact path="/">
             <Home />
@@ -21,6 +24,9 @@ ReactDOM.render(
             path="/Logement/:id_logement"
             render={(props) => <Logement {...props} />}
           />
+          <Route path="/A-Propos">
+            <APropos />
+          </Route>
           <Route path="*">
             <Error />
           </Route>
