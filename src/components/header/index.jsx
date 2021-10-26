@@ -8,7 +8,7 @@ class Header extends Component {
         let currentPath = this.props.location.pathname.split("/")[1]
         let linkClass = "current-page"
         return (
-            <header>
+            <header className={"flex"}>
                 <img src={Logo} alt="Kasa logo"/>
                 <nav>
                     <Link to="/" className={currentPath === "" ? linkClass : null }> Accueil </Link>

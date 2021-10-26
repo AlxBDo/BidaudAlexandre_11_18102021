@@ -1,6 +1,6 @@
 :root{
-  --first-color : #FF6060; 
---background-color: #F6F6F6
+  	--first-color : #FF6060; 
+	--background-color: #F6F6F6
 }
 
 .dropdown-box a {
@@ -43,9 +43,11 @@
 	opacity: 0;
 }
 
+.flex { display: flex}
+
 html, body {
     font-family: Montserrat;
-	  margin: 0;
+	margin: 0;
 }
 
 #loading-data {
@@ -61,10 +63,9 @@ html, body {
 main {
 	width: 90%;
 	margin: 0% auto 5%;
-  min-height: 700px;
+  	min-height: 700px;
 }
 #root {
-	display: flex;
 	flex-direction: column;
 	height: 100%;
 	position: relative
@@ -107,7 +108,6 @@ footer div {
  */
 header {
 	width: 90%;
-	display: flex;
 	justify-content: space-between;
 }
 header nav {
@@ -138,7 +138,6 @@ header nav a.current-page { text-decoration: underline; }
 #logement-pictures {
 	overflow: hidden;
 	max-height: 415px;
-	display: flex;
 	align-items: center;
 	background-color: var(--background-color);
 	position: relative;
@@ -160,18 +159,11 @@ header nav a.current-page { text-decoration: underline; }
 	position: absolute;
 }
 
-#rating .star {
-	background-image: url("https://alxbdo.github.io/BidaudAlexandre_11_18102021/src/assets/inactiv_star.png");
-	display: inline-block;
-	background-repeat: repeat;
-	background-position: center;
-	background-size: cover;
-}
-#rating.star1 .star:nth-of-type(1), #rating.star2 .star:nth-of-type(1), #rating.star3 .star:nth-of-type(1), #rating.star4 .star:nth-of-type(1), #rating.star5 .star:nth-of-type(1), 
-#rating.star2 .star:nth-of-type(2), #rating.star3 .star:nth-of-type(2), #rating.star4 .star:nth-of-type(2),  #rating.star5 .star:nth-of-type(2),
-#rating.star3 .star:nth-of-type(3), #rating.star4 .star:nth-of-type(3), #rating.star5 .star:nth-of-type(3), 
-#rating.star4 .star:nth-of-type(4), #rating.star5 .star:nth-of-type(4), 
-#rating.star5 .star:nth-of-type(5) 
+#rating.star1 span:nth-of-type(1), #rating.star2 span:nth-of-type(1), #rating.star3 span:nth-of-type(1), #rating.star4 span:nth-of-type(1), #rating.star5 span:nth-of-type(1), 
+#rating.star2 span:nth-of-type(2), #rating.star3 span:nth-of-type(2), #rating.star4 span:nth-of-type(2),  #rating.star5 span:nth-of-type(2),
+#rating.star3 span:nth-of-type(3), #rating.star4 span:nth-of-type(3), #rating.star5 span:nth-of-type(3), 
+#rating.star4 span:nth-of-type(4), #rating.star5 span:nth-of-type(4), 
+#rating.star5 span:nth-of-type(5) 
 {
 	background-image: url("https://alxbdo.github.io/BidaudAlexandre_11_18102021/src/assets/activ_star.png");
 }
@@ -182,7 +174,6 @@ header nav a.current-page { text-decoration: underline; }
 }
 #top-infos h1 { font-weight: 500; }
 #top-infos #host {
-	display: flex;
 	justify-content: flex-end;
 	align-items: center;
 }
@@ -193,16 +184,7 @@ header nav a.current-page { text-decoration: underline; }
 #top-infos #host p {
 	margin-right: 5%;
 }
-#top-infos li {
-	background-color: var(--first-color);
-	display: inline-block;
-	color: white;
-}
 #top-infos p { font-weight: 500; }
-#top-infos ul {
-	padding: 0;
-	margin: 0;
-}
 
 
 /**
@@ -212,14 +194,6 @@ main picture img {
 	object-fit: contain;
 	width: 100%;
 	margin: 3% auto;
-}
-
-#rentalList a {
-	overflow: hidden;
-	display: flex;
-	flex-direction: column;
-	text-decoration: none;
-	border-radius: 10px;
 }
 #rentalList a img {
 	object-fit: cover;
@@ -248,9 +222,9 @@ main picture img {
  * media queries
  */
  @media screen and (max-width: 899px){
-  #a-propos .dropdown-box:nth-of-type(4) {
-    margin-bottom: 20%;
-  }
+	#a-propos .dropdown-box:nth-of-type(4) {
+		margin-bottom: 20%;
+	}
 	#a-propos .dropdown-box a { 
 		padding: 3%;
 		font-size: small; 
@@ -288,10 +262,10 @@ main picture img {
 		text-transform: uppercase;
 	}
 	#location { 
-    font-size: small;
-    margin: 3% 0; 
-  }
-  #logement-pictures { border-radius: 10px; }
+		font-size: small;
+		margin: 3% 0; 
+	}
+  	#logement-pictures { border-radius: 10px; }
 	#logement-pictures img { height: 255px; }
 	.slider #next, .slider #previous {
 		width: 13px;
@@ -299,34 +273,19 @@ main picture img {
 		background-size: contain;
 		background-repeat: no-repeat;
 	}
-	#rating .star {
-		width: 16px;
-		height: 16px;
-		margin-right: 3px;
-	}
-	#rentalList a {
-		margin: 0% 0% 5%;
-		height: 285px;
-	}
 	#top-infos div:nth-of-type(2) {
 		display: flex;
 		flex-direction: row-reverse;
 		justify-content: space-between;
 		align-items: center;
-    margin: 2% auto;
+    	margin: 2% auto;
 	}
-  #top-infos h1 {
-    margin: 5% 0 0;
-    font-size: large;
-  }
+	#top-infos h1 {
+		margin: 5% 0 0;
+		font-size: large;
+	}
 	#top-infos #host img { width: 20%; }
 	#top-infos #host p { max-width: 85px; }
-	#top-infos li {
-		margin: 0 5% 1% 0;
-		border-radius: 5px;
-    font-size: xx-small;
-    padding: 1% 5%;
-	}
  }
 
 @media screen and (min-width:900px) {
@@ -345,7 +304,7 @@ main picture img {
 		justify-content: space-between;
 	}
 	#details div { width: 40%; }
-  .dropdown-box a { font-size: medium; }
+  	.dropdown-box a { font-size: medium; }
 	.error-msg div {
 		margin: 6% auto 10%;
 	}
@@ -372,7 +331,7 @@ main picture img {
 		font-size: x-large;
 	}
 	#location { margin: 1% 0 3%; }
-  #logement-pictures { border-radius: 20px; }
+  	#logement-pictures { border-radius: 20px; }
 	#logement-pictures img { height: 415px; }
 	main { 
 		height: 74%;
@@ -382,11 +341,6 @@ main picture img {
 		width: 48px;
 		height: 80px;
 	}
-	#rating .star {
-		width: 25px;
-		height: 25px;
-		margin-right: 5px;
-	}
 	#rentalList {
 		display: flex;
 		flex-wrap: wrap;
@@ -395,30 +349,19 @@ main picture img {
 		border-radius: 25px;
 		padding: 2%;
 	}
-	#rentalList a {
-		width: 27%;
-		margin: 3% 3% 2%;
-		height: 340px;
-	}
 	#top-infos, #details { display: flex; }
 	#top-infos div:first-of-type { width: 80%; }
 	#top-infos div:last-of-type { width: 20%; }
-  #top-infos h1 {
-    font-size: xx-large;
-    margin: 2% 0 0;
-  }
+	#top-infos h1 {
+		font-size: xx-large;
+		margin: 2% 0 0;
+	}
 	#top-infos #host {
 		width: 100%;
 		margin: 10% 0 0px;
 	}
 	#top-infos #host img { width: 25%; }
 	#top-infos #host p { max-width: 105px; }
-  #top-infos li {
-    margin: 0 1% 0 0;
-		border-radius: 30px;
-    font-size: x-small;
-    padding: 0.5% 5%;
-  }
 }
 
 
