@@ -3,28 +3,6 @@
 	--background-color: #F6F6F6
 }
 
-.dropdown-box a {
-	background-color: var(--first-color);
-	display: block;
-	color: white;
-	text-decoration: none;
-	border-radius: 7px;
-	padding: 2% 4%;
-}
-.dropdown-box.close { 
-	transition: margin 250ms ease-in-out; 
-	height: 50px;
-}
-.dropdown-box.close a:after, .dropdown-box.open a:after{ float: right; }
-.dropdown-box.close a:after {
-	content: url("https://alxbdo.github.io/BidaudAlexandre_11_18102021/src/assets/dropdown_close.png");
-}
-.dropdown-box.open a:after {
-	content: url("https://alxbdo.github.io/BidaudAlexandre_11_18102021/src/assets/dropdown_open.png");
-}
-.dropdown-box li {
-	list-style: none;
-}
 .dropdown-box p, .dropdown-box ul {
 	width: 92%;
 	background-color: var(--background-color);
@@ -50,16 +28,6 @@ html, body {
 	margin: 0;
 }
 
-#loading-data {
-	border: 10px solid lightgreen;
-	height: 50px;
-	width: 50px;
-	border-radius: 100px;
-	border-bottom-color: transparent;
-	margin: 100px auto;
-	animation: loading 700ms linear infinite;
-}
-
 main {
 	width: 90%;
 	margin: 0% auto 5%;
@@ -73,54 +41,8 @@ main {
 
 
 /**
- *  404 page
-*/
-.error-msg {
-	color: var(--first-color);
-	text-align: center;
-}
-.error-msg p {
-	font-weight: 500;
-}
-#page-not-found {
-	margin: 2% auto;
-	font-weight: 700;
-}
-
-
-/**
- *  Footer
- */
-footer {
-	background-color: black;
-	padding: 3%;
-	color: white;
-	text-align: center;
-}
-footer div {
-	margin-top: 2%;
-	font-weight: 500;
-}
-
-
-/**
  *  Header
  */
-header {
-	width: 90%;
-	justify-content: space-between;
-}
-header nav {
-	width: 50%;
-	text-align: right;
-}
-header nav a {
-	color: var(--first-color);
-	margin-left: 5%;
-	font-family: Montserrat;
-	font-weight: 500;
-	text-decoration: none;
-}
 header nav a.current-page { text-decoration: underline; }
 
 
@@ -135,19 +57,6 @@ header nav a.current-page { text-decoration: underline; }
 	padding: 6% 4%;
 }
 
-#logement-pictures {
-	overflow: hidden;
-	max-height: 415px;
-	align-items: center;
-	background-color: var(--background-color);
-	position: relative;
-}
-#logement-pictures img {
-	object-fit: cover;
-	border-radius: 20px;
-	width: 0;
-	transition: width 250ms ease-in-out;
-}
 #logement-pictures img.activ {
 	transform-origin: right;
 	width: 100%;
@@ -169,9 +78,7 @@ header nav a.current-page { text-decoration: underline; }
 }
 
 #top-infos, #details { color: var(--first-color); }
-#top-infos div:nth-of-type(2) {
-	text-align: right;
-}
+#top-infos div:nth-of-type(2) { text-align: right; }
 #top-infos h1 { font-weight: 500; }
 #top-infos #host {
 	justify-content: flex-end;
@@ -181,9 +88,7 @@ header nav a.current-page { text-decoration: underline; }
 	border-radius: 100%;
 	order: 2;
 }
-#top-infos #host p {
-	margin-right: 5%;
-}
+#top-infos #host p { margin-right: 5%; }
 #top-infos p { font-weight: 500; }
 
 
@@ -194,20 +99,6 @@ main picture img {
 	object-fit: contain;
 	width: 100%;
 	margin: 3% auto;
-}
-#rentalList a img {
-	object-fit: cover;
-	height: 100%;
-}
-#rentalList a p {
-	margin: -156px 0 -5px;
-	color: white;
-	padding: 99px 20px 10px;
-	height: 50px;
-	background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(2,0,0,0.9) 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(2,0,0,0.9) 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(2,0,0,0.9) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#80020000',GradientType=0 ); /* IE6-9 */
 }
 
 
@@ -234,39 +125,13 @@ main picture img {
 		width: 90%;
 		font-size: 0.7em;
 	}
-  .dropdown-box a { font-size: small; }
-	.dropdown-box.open { margin-bottom: 25px; }
-	.error-msg div {
-		margin: 50% auto 40%;
-		width: 80%;
-	}
-	.error-msg div:last-child a {
-		font-size: small;
-		font-weight: 500;
-	}
-	.error-msg p {
-		font-weight: 500;
-    line-height: 1.5;
-	}
-	.error-msg div p:last-child { font-size: large; }
-	#page-not-found { font-size: 5em; }
-	header {
-		margin: 5% auto;
-		align-items: center;
-	}
 	header img {
 		width: 40%;
-	}
-	header nav a {
-		font-size: small;
-		text-transform: uppercase;
 	}
 	#location { 
 		font-size: small;
 		margin: 3% 0; 
 	}
-  	#logement-pictures { border-radius: 10px; }
-	#logement-pictures img { height: 255px; }
 	.slider #next, .slider #previous {
 		width: 13px;
 		height: 20px;
@@ -303,36 +168,10 @@ main picture img {
 		display: flex;
 		justify-content: space-between;
 	}
-	#details div { width: 40%; }
-  	.dropdown-box a { font-size: medium; }
-	.error-msg div {
-		margin: 6% auto 10%;
-	}
-	.error-msg p {
-		font-weight: 500;
-	}
-	.error-msg div p:last-child {
-		font-size: x-large;
-	}
-	#page-not-found {
-		font-size: 10em;
-		margin: 2% auto;
-		font-weight: 700;
-	}
 	footer, header {
 		height: 10%;
 	}
-	header {
-		margin: 2% auto;
-		align-items: baseline;
-		max-width: 1250px;
-	}
-	header nav a {
-		font-size: x-large;
-	}
 	#location { margin: 1% 0 3%; }
-  	#logement-pictures { border-radius: 20px; }
-	#logement-pictures img { height: 415px; }
 	main { 
 		height: 74%;
 		max-width: 1250px; 
@@ -340,14 +179,6 @@ main picture img {
 	.slider #next, .slider #previous {
 		width: 48px;
 		height: 80px;
-	}
-	#rentalList {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		background-color: var(--background-color);
-		border-radius: 25px;
-		padding: 2%;
 	}
 	#top-infos, #details { display: flex; }
 	#top-infos div:first-of-type { width: 80%; }
