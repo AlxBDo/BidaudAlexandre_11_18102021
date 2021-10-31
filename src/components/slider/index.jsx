@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import nextIconPicture from '../../assets/next.png'
 import previousIconPicture from '../../assets/previous.png'
 
-
 const MoveIcon = styled.div`
     ${(props) => props.$name === "next" ? (
         `background-image: url(${nextIconPicture}); 
@@ -27,6 +26,7 @@ const PictureSlider = styled.img`
         height: 415px;
     }
 `
+
 const SliderContainer = styled.section`
     overflow: hidden;
     max-height: 415px;

@@ -20,6 +20,7 @@ class Logement extends fetchData {
             equipments, 
             tags
         } = data
+        
         return(
             <main>
                 {!Array.isArray(pictures) ? this.loadingData("images") : ( <Slider pictures={pictures} /> )}

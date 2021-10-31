@@ -34,12 +34,6 @@ const StyledLink = styled(Link)`
 const StyledNav = styled.nav`
     width: 50%;
     text-align: right;
-    @media (max-width: 899px){
-
-    }
-    @media (min-width: 900px){
-        
-    }
 `
 
 class Header extends Component {
