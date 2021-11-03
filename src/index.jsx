@@ -23,7 +23,7 @@ ReactDOM.render(
             <Home />
           </Route>
           <Route 
-            path="/Logement/:id_logement"
+            exact path="/Logement/:id_logement"
             render={(props) => <Logement {...props} />}
           />
           <Route path="/A-Propos">

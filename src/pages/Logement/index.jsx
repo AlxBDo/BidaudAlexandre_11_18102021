@@ -3,13 +3,14 @@ import DropdownBox from '../../components/dropdownBox'
 import Tags from '../../components/tags'
 import Rating from '../../components/rating'
 import Slider from '../../components/slider'
+import Error from '../../components/error'
 
 
 
 class Logement extends fetchData {
 
     render(){
-        const { data, isLoading } = this.state
+        const { data, isLoading, error } = this.state
         const {
             title, 
             pictures, 
@@ -23,6 +24,7 @@ class Logement extends fetchData {
         
         return(
             <main>
+                {error ? (<Error />) : null }
                 {!Array.isArray(pictures) ? this.loadingData("images") : ( <Slider pictures={pictures} /> )}
                 <section id="top-infos">
                     <div>

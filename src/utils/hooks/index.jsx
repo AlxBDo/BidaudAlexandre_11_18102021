@@ -29,7 +29,8 @@ class fetchData extends Component{
         super(props)
         this.state = {
             data: {},
-            isLoading: true
+            isLoading: true,
+            error: false
         }
     }
 
@@ -40,8 +41,12 @@ class fetchData extends Component{
             if(this.props.match){
                 for(let logement of jsonResponse){
                     const { id_logement } = this.props.match.params
-                    if(logement.id === id_logement){ this.setState({ data: logement, isLoading: false }) }
+                    if(logement.id === id_logement){ 
+                        this.setState({ data: logement, isLoading: false }) 
+                        return true
+                    }
                 }
+                this.setState({error: true})
             } else { this.setState({ data: jsonResponse, isLoading: false }) }
         })
     }
